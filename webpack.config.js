@@ -29,6 +29,7 @@ function materialImporter(url, prev) {
 
 
 module.exports = [{
+    mode: 'production',
     entry: './sass/main.scss',
     output: {
         // This is necessary for webpack to compile
@@ -36,6 +37,11 @@ module.exports = [{
         filename: 'style-bundle.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true
+    },
+    performance: {
+        hints: false,
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000
     },
     module: {
         rules: [
@@ -45,7 +51,7 @@ module.exports = [{
                     {
                         loader: 'file-loader',
                         options: {
-                            name: 'theme.css',
+                            name: 'material-components-web.min.css',
                         },
                     },
                     { loader: 'extract-loader' },
