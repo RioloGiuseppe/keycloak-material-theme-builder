@@ -12,50 +12,47 @@
             <form id="kc-form-login" class="form ${properties.kcFormClass!}" action="${url.loginAction}" method="post">
                 <div class="username-container ${properties.kcFormGroupClass!}">
                     <div class="${properties.kcInputWrapperClass!}">
-                        <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!} <#if usernameEditDisabled??>mdc-text-field--disabled</#if>">
-                            <i class="material-icons mdc-text-field__icon" tabindex="-1" role="button">person</i>
-                            <input required id="username" class="mdc-text-field__input ${properties.kcInputClass!}" name="username" value="${(login.username!'')}" type="text" autofocus autocomplete="off" <#if usernameEditDisabled??>disabled</#if>>
-                            <div class="${properties.kcLabelWrapperClass!}">
-                                <label for="username" class="mdc-floating-label ${properties.kcLabelClass!}">
-                                    <#if !realm.loginWithEmailAllowed>
+                        <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!} <#if usernameEditDisabled??>mdc-text-field--disabled</#if>">
+                            <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">person</i>
+                            <input required id="username" class="mdc-text-field__input ${properties.kcInputClass!}" name="username" value="${(login.username!'')}" type="text" autofocus autocomplete="off" aria-labelledby="aria-username" <#if usernameEditDisabled??>disabled</#if> >
+                            <span class="mdc-notched-outline">
+                                <span class="mdc-notched-outline__leading"></span>
+                                <span class="mdc-notched-outline__notch">
+                                    <span class="mdc-floating-label ${properties.kcLabelClass!}" id="aria-username">
+                                          <#if !realm.loginWithEmailAllowed>
                                         ${msg("username")}
                                     <#elseif !realm.registrationEmailAsUsername>
                                         ${msg("usernameOrEmail")}
                                     <#else>
                                         ${msg("email")}
                                     </#if>
-                                </label>
-                            </div>
-                            <div class="mdc-notched-outline">
-                                <svg>
-                                    <path class="mdc-notched-outline__path"/>
-                                </svg>
-                            </div>
-                            <div class="mdc-notched-outline__idle"></div>
-                        </div>
+                                    </span>
+                                </span>
+                                <span class="mdc-notched-outline__trailing"></span>
+                            </span>
+                        </span>
                     </div>
                 </div>
                 <div class="password-container ${properties.kcFormGroupClass!}">
                     <div class="${properties.kcInputWrapperClass!}">
-
-                        <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
-                            <i class="material-icons mdc-text-field__icon" tabindex="-1" role="button">lock</i>
-                            <input required id="password" class="mdc-text-field__input ${properties.kcInputClass!}" name="password" type="password" autocomplete="off">
-                            <div class="${properties.kcLabelWrapperClass!}">
-                                <label for="password" class="mdc-floating-label ${properties.kcLabelClass!}">${msg("password")}</label>
-                            </div>
-                            <div class="mdc-notched-outline">
-                                <svg>
-                                    <path class="mdc-notched-outline__path"/>
-                                </svg>
-                            </div>
-                            <div class="mdc-notched-outline__idle"></div>
-                        </div>
+                        <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
+                            <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">lock</i>
+                            <input required id="password" class="mdc-text-field__input ${properties.kcInputClass!}" name="password" type="password" autocomplete="off"  aria-labelledby="aria-password">
+                            <span class="mdc-notched-outline">
+                                <span class="mdc-notched-outline__leading"></span>
+                                <span class="mdc-notched-outline__notch">
+                                    <span class="mdc-floating-label ${properties.kcLabelClass!}" id="aria-password">
+                                         ${msg("password")}
+                                    </span>
+                                </span>
+                                <span class="mdc-notched-outline__trailing"></span>
+                            </span>
+                        </span>
                     </div>
-                    <#--  <div id="capsLockWarning" style="font-weight: bold; color: maroon; margin: 0 0 10px 0; display: none;">
+                    <div id="capsLockWarning" style="font-weight: bold; color: maroon; margin: 0 0 10px 0; display: none;">
                       <i class="fa fa-exclamation-triangle" style="color: #f0ad4e"></i>
 					  ${msg("capsLockWarning")}
-                    </div>  -->
+                    </div> 
                 </div>
 
                 <div class="${properties.kcFormGroupClass!}">

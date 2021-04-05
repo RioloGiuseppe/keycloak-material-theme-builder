@@ -14,14 +14,14 @@ window.onload = function() {
         new mdc.textField.MDCTextFieldIcon(e);
     });
 
-    // initialize the language select box
-    var select = new mdc.select.MDCSelect(
-        document.querySelector('.language-picker .mdc-select')
-    );
+    // // initialize the language select box
+    // var select = new mdc.select.MDCSelect(
+    //     document.querySelector('.language-picker .mdc-select')
+    // );
 
-    select.listen('change', function() {
-        var redirectUrl = document.querySelector('#language-picker-dropdown')
-            .value;
-        window.location.href = redirectUrl;
-    });
+    // select.listen('change', function() {
+    //     var redirectUrl = document.querySelector('#language-picker-dropdown')
+    //         .value;
+    //     window.location.href = redirectUrl;
+    // });
 };
