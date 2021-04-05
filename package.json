@@ -1,8 +1,6 @@
 {
     "scripts": {
-        "build-material": "webpack --mode=production",
-        "create-login": "gulp",
-        "clean": "rimraf -r dist"
+        "build-material": "webpack --mode=production"
     },
     "dependencies": {
         "@material/theme": "^10.0.0",
@@ -12,6 +10,8 @@
         "autoprefixer": "^10.2.5",
         "css-loader": "^5.2.0",
         "extract-loader": "^5.1.0",
+        "favicons": "^6.2.1",
+        "favicons-webpack-plugin": "^5.0.2",
         "file-loader": "^6.2.0",
         "postcss-loader": "^5.2.0",
         "rimraf": "^3.0.2",

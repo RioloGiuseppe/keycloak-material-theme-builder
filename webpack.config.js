@@ -1,5 +1,6 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 function tryResolve_(url, sourceFilename) {
     // Put require.resolve in a try/catch to avoid node-sass failing with cryptic libsass errors
@@ -30,7 +31,7 @@ function materialImporter(url, prev) {
 
 module.exports = [{
     mode: 'production',
-    entry: './sass/main.scss',
+    entry: './src/material-custom/main.scss',
     output: {
         // This is necessary for webpack to compile
         // But we never use style-bundle.js
@@ -83,4 +84,24 @@ module.exports = [{
             }
         ]
     },
+    plugins: [
+        new FaviconsWebpackPlugin({
+            logo: './src/icons/favicon.png',
+            cache: true,
+            outputPath: 'favicon',
+            inject: true,
+            favicons: {
+                appName: 'my-app',
+                appDescription: 'My awesome App',
+                developerName: 'Me',
+                developerURL: null,
+                background: '#ddd',
+                theme_color: '#333',
+                icons: {
+                    coast: false,
+                    yandex: false
+                }
+            }
+        })
+    ]
 }];
