@@ -1,6 +1,7 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const settings = require('./src/settings.json')
 
 function tryResolve_(url, sourceFilename) {
     // Put require.resolve in a try/catch to avoid node-sass failing with cryptic libsass errors
@@ -86,17 +87,17 @@ module.exports = [{
     },
     plugins: [
         new FaviconsWebpackPlugin({
-            logo: './src/icons/favicon.png',
+            logo: settings.logo,
             cache: true,
             outputPath: 'favicon',
             inject: true,
             favicons: {
-                appName: 'my-app',
-                appDescription: 'My awesome App',
-                developerName: 'Me',
-                developerURL: null,
-                background: '#ddd',
-                theme_color: '#333',
+                appName: settings.appName,
+                appDescription: settings.appDescription,
+                developerName: settings.developerName,
+                developerURL: settings.developerURL,
+                background: settings.background,
+                theme_color: settings.theme_color,
                 icons: {
                     coast: false,
                     yandex: false

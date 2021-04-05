@@ -1,0 +1,9 @@
+{
+    "logo": "./src/icons/favicon.svg",
+    "appName": "my-app",
+    "appDescription": "My awesome App",
+    "developerName": "Me",
+    "developerURL": null,
+    "background": "#ddd",
+    "theme_color": "#333"
+}
