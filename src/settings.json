@@ -1,9 +1,9 @@
 {
     "logo": "./src/icons/favicon.svg",
-    "appName": "my-app",
-    "appDescription": "My awesome App",
-    "developerName": "Me",
+    "appName": "Addubby",
+    "appDescription": "Addubby",
+    "developerName": "Riolabs",
     "developerURL": null,
-    "background": "#ddd",
-    "theme_color": "#333"
+    "background": "#fff",
+    "theme_color": "#c6392f"
 }
