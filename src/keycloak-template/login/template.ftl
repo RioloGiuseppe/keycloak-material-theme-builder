@@ -67,16 +67,17 @@
 </head>
 
 <body class="${properties.kcBodyClass!} template">
-    <div id="kc-logo"><a href="${properties.kcLogoLink!'#'}"><div id="kc-logo-wrapper"></div></a></div>
+
 
     <div id="kc-container" class="${properties.kcContainerClass!}">
         <div id="kc-container-wrapper" class="${properties.kcContainerWrapperClass!}">
-
-            <div id="kc-header" class="${properties.kcHeaderClass!}">
-                <div id="kc-header-wrapper" class="${properties.kcHeaderWrapperClass!}"><#nested "header"></div>
-            </div>
-
-            <div id="kc-content" class="mdc-card ${properties.kcContentClass!}">
+           <div id="kc-content" class="mdc-card ${properties.kcContentClass!}">
+                
+                <div id="kc-header" class="${properties.kcHeaderClass!}">
+                    <img src="${url.resourcesPath}/img/logo.svg">
+                    <#nested "header">
+                </div>
+ 
                 <div id="kc-content-wrapper" class="${properties.kcContentWrapperClass!}">
 
                     <#if displayMessage && message?has_content>
@@ -105,55 +106,74 @@
                         </div>
                     </#if>
                 </div>
-            </div>
 
-            <#if realm.internationalizationEnabled>
-                <div id="kc-locale" class="${properties.kcLocaleClass!}">
-                    <div id="kc-locale-wrapper" class="${properties.kcLocaleWrapperClass!}">
-                        <div class="kc-dropdown language-picker" id="kc-locale-dropdown">
-                            <i class="language-icon material-icons mdc-text-field__icon" tabindex="-1" role="button">language</i>
-                            <div class="mdc-select">
-                                <select id="language-picker-dropdown" class="mdc-select__native-control">
-                                    <option value="" disabled></option>
+                <#if realm.internationalizationEnabled>
+                    <div id="kc-locale" class="${properties.kcLocaleClass!}">
+                        <div id="kc-locale-wrapper" class="${properties.kcLocaleWrapperClass!}">
+                            <div class="kc-dropdown language-picker" id="kc-locale-dropdown">
+                                <div class="mdc-select mdc-select--outlined mdc-select--with-leading-icon">
+                                    <div class="mdc-select__anchor">
+                                        <i class="material-icons mdc-select__icon" tabindex="0" role="button">language</i>
+                                        <span class="mdc-notched-outline">
+                                            <span class="mdc-notched-outline__leading"></span>
+                                            <span class="mdc-notched-outline__notch"> </span>
+                                            <span class="mdc-notched-outline__trailing"></span>
+                                        </span>
+                                        <span class="mdc-select__selected-text-container">
+                                            <span
+                                            id="demo-selected-text"
+                                            class="mdc-select__selected-text"
+                                            ></span>
+                                        </span>
+                                        <span class="mdc-select__dropdown-icon">
+                                            <svg
+                                            class="mdc-select__dropdown-icon-graphic"
+                                            viewBox="7 10 10 5"
+                                            focusable="false"
+                                            >
+                                            <polygon
+                                                class="mdc-select__dropdown-icon-inactive"
+                                                stroke="none"
+                                                fill-rule="evenodd"
+                                                points="7 10 12 15 17 10"
+                                            ></polygon>
+                                            <polygon
+                                                class="mdc-select__dropdown-icon-active"
+                                                stroke="none"
+                                                fill-rule="evenodd"
+                                                points="7 15 12 10 17 15"
+                                            ></polygon>
+                                            </svg>
+                                        </span>
+                                    </div>
 
-                                    <#list locale.supported as l>
-                                        <#if l.label = locale.current>
-                                            <option value="" selected>${l.label}</option>
-                                        <#else>
-                                            <option value="${l.url}">${l.label}</option>
-                                        </#if>
-                                        
-                                    </#list>
-                                </select>
-                                <#--  <label class="mdc-floating-label mdc-floating-label--float-above">Language!</label>  -->
-                                <div class="mdc-line-ripple"></div>
-                            </div>
-
-                            <#--  <div class="form-inline">
-                                <div class="form-group">
-                                    <label for="language-picker-dropdown" class="language-picker-dropdown-label">
-                                        <i class="fa fa-2x fa-globe"></i>
-                                    </label>
-                                    <select id="language-picker-dropdown" class="form-control" onchange="languageSelected()">
-                                        <#list locale.supported as l>
-                                            <#if l.label = locale.current>
-                                                <option value="" selected>${l.label}</option>
-                                            <#else>
-                                                <option value="${l.url}">${l.label}</option>
-                                            </#if>
-                                            
-                                        </#list>
-                                    </select>
-
-                                    
+                                    <div class="mdc-select__menu mdc-menu mdc-menu-surface mdc-menu-surface--fullwidth">
+                                        <ul class="mdc-list" role="listbox" aria-label="Food picker listbox" >
+                                            <#list locale.supported as l>
+                                                <#if l.label = locale.current>
+                                                <li class="mdc-list-item mdc-list-item--selected" aria-selected="true" data-value="" role="option">
+                                                    <span class="mdc-list-item__ripple"></span>
+                                                    <span class="mdc-list-item__text">
+                                                        ${l.label}
+                                                    </span>
+                                                </li>
+                                                <#else>
+                                                    <li class="mdc-list-item" aria-selected="false" data-value="${l.url}" role="option">
+                                                        <span class="mdc-list-item__ripple"></span>
+                                                        <span class="mdc-list-item__text">
+                                                            ${l.label}
+                                                        </span>
+                                                    </li>
+                                                </#if>
+                                            </#list>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>  -->
-
+                            </div>
                         </div>
                     </div>
-                </div>
-            </#if>
-
+                </#if>
+            </div>
         </div>
     </div>
 </body>

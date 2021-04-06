@@ -3,7 +3,7 @@
     <#if section = "title">
         ${msg("errorTitle")?no_esc}
     <#elseif section = "header">
-        ${msg("errorTitleHtml")?no_esc}
+        ${msg("errorTitle")?no_esc}
     <#elseif section = "form">
         <div id="kc-error-message">
             <p class="instruction">${message.summary}</p>

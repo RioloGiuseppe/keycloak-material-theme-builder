@@ -1,23 +1,24 @@
-window.onload = function() {
+window.onload = function () {
     // add ripple effect to all material buttons on the page
-    document.querySelectorAll('.mdc-button').forEach(function(e) {
+    document.querySelectorAll('.mdc-button').forEach(function (e) {
         mdc.ripple.MDCRipple.attachTo(e);
     });
 
     // initialize all text fields
-    document.querySelectorAll('.mdc-text-field').forEach(function(e) {
+    document.querySelectorAll('.mdc-text-field').forEach(function (e) {
         new mdc.textField.MDCTextField(e);
     });
 
     // initialize all icons
-    document.querySelectorAll('.mdc-text-field__icon').forEach(function(e) {
+    document.querySelectorAll('.mdc-text-field__icon').forEach(function (e) {
         new mdc.textField.MDCTextFieldIcon(e);
     });
 
-    // // initialize the language select box
-    // var select = new mdc.select.MDCSelect(
-    //     document.querySelector('.language-picker .mdc-select')
-    // );
+    var select = new mdc.select.MDCSelect(document.querySelector('.mdc-select'));
+
+    select.listen('MDCSelect:change', () => {
+        alert(`Selected option at index ${select.selectedIndex} with value "${select.value}"`);
+    });
 
     // select.listen('change', function() {
     //     var redirectUrl = document.querySelector('#language-picker-dropdown')

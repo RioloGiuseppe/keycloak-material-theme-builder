@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i');
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .title {
@@ -23,19 +23,24 @@ body {
 
 #kc-header {
     width: 90%;
-    font-size: 35px;
     text-align: center;
-    margin-bottom: 25px;
-    font-weight: 300;
-    margin-top: 7%;
-    color: rgb(68, 68, 68);
+    margin-bottom: 10px;
+}
+
+#kc-header img {
+    display: block;
+    width: 60%;
+    margin: 0 auto;
 }
 
 #kc-content {
-    background: white;
     padding: 20px;
-    box-shadow: 0 5px 6px -3px rgba(0, 0, 0, 0.2),
-        0 9px 12px 1px rgba(0, 0, 0, 0.14), 0 3px 16px 2px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 5px 6px -3px rgba(0, 0, 0, 0.2), 0 9px 12px 1px rgba(0, 0, 0, 0.14),
+        0 3px 16px 2px rgba(0, 0, 0, 0.12);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #kc-reset-password-form #kc-form-options {
@@ -78,16 +83,18 @@ hr {
     }
 }
 
+.mdc-text-field--outlined {
+    height: 41px;
+    overflow: visible;
+    margin: 12px 0px;
+}
+
 .mdc-text-field {
     width: 100%;
 }
 
-#kc-form-login #kc-form-options {
-    margin-top: 15px;
-}
-
-#kc-login {
-    float: right;
+.fullwidth {
+    width: 100%;
 }
 
 #kc-error-message p {
@@ -134,28 +141,43 @@ hr {
     margin-top: 20px;
 }
 
-.template .language-picker {
-    position: relative;
-    margin: 0 auto;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    width: 195px;
+#kc-locale .mdc-select {
+    width: 100%;
 }
 
-.template .language-picker .language-icon {
-    float: left;
+#kc-locale .mdc-select .mdc-select__anchor {
+    height: unset;
+}
+
+#kc-locale .mdc-select .mdc-select__anchor i.material-icons.mdc-select__icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+#kc-locale .mdc-select .mdc-list-item {
+    height: 34px;
+}
+
+#kc-social-providers {
+    text-align: center;
+}
+
+#kc-social-providers a {
+    height: 56px;
+    width: 56px;
+    min-width: 56px !important;
+    max-width: 56px !important;
     color: rgba(0, 0, 0, 0.54);
+    margin: 0px 6px;
 }
 
-.template .language-picker .mdc-select {
-    float: right;
-    margin-top: -25px;
-}
-
-.template .language-picker .mdc-select option {
-    font-weight: normal;
-    display: block;
-    white-space: pre;
-    min-height: 1.2em;
-    padding: 0px 2px 1px;
+#kc-social-providers a i.material-icons.mdc-button__icon {
+    margin-left: -8px;
+    margin-right: -1px;
+    display: inline-block;
+    width: 43px;
+    height: 49px;
+    font-size: 50px !important;
+    vertical-align: top;
 }
