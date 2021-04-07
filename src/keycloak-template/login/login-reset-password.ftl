@@ -9,17 +9,34 @@
             <div class="reset-password-field ${properties.kcFormGroupClass!}">
                 <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!} <#if usernameEditDisabled??>mdc-text-field--disabled</#if>" >
                     <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">person</i>
-                    <input required id="username" class="mdc-text-field__input ${properties.kcInputClass!}" name="username" type="text" autofocus aria-labelledby="aria-username">
+                    <#if auth?has_content && auth.showUsername()>
+                        <input required type="text" id="username" name="username" class="mdc-text-field__input ${properties.kcInputClass!}" autofocus aria-labelledby="aria-username" aria-invalid="<#if messagesPerField.existsError('username')>true</#if>" value="${auth.attemptedUsername}"/>
+                    <#else>
+                        <input required type="text" id="username" name="username" class="mdc-text-field__input ${properties.kcInputClass!}" autofocus aria-labelledby="aria-username" aria-invalid="<#if messagesPerField.existsError('username')>true</#if>"/>
+                    </#if>
                     <span class="mdc-notched-outline">
                         <span class="mdc-notched-outline__leading"></span>
                         <span class="mdc-notched-outline__notch">
                             <span class="mdc-floating-label ${properties.kcLabelClass!}" id="aria-username">
-                                ${msg("username")?no_esc}
+                                <#if !realm.loginWithEmailAllowed>
+                                    ${msg("username")}
+                                <#elseif !realm.registrationEmailAsUsername>
+                                    ${msg("usernameOrEmail")}
+                                <#else>
+                                    ${msg("email")}
+                                </#if>
                             </span>
                         </span>
                         <span class="mdc-notched-outline__trailing"></span>
                     </span>
                 </span>
+                <#if messagesPerField.existsError('username')>
+                    <div class="mdc-text-field-helper-line">
+                        <div class="mdc-text-field-helper-text ${properties.kcInputErrorMessageClass!}" id="input-error-username" aria-hidden="true" aria-live="polite">
+                            ${kcSanitize(messagesPerField.get('username'))?no_esc}
+                        </div>
+                    </div>
+                </#if>
             </div>
             <div class="${properties.kcFormGroupClass!}">
                 <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
@@ -27,7 +44,7 @@
                         <div class="${properties.kcFormButtonsWrapperClass!}">
                             <a class="mdc-button mdc-button--outlined fullwidth my" href="${url.loginUrl}">
                                 <span class="mdc-button__ripple"></span>
-                                ${msg("backToLogin")?no_esc}
+                                ${kcSanitize(msg("backToLogin"))?no_esc}
                             </a>
                         </div>
                         <div class="clearfix"></div>
