@@ -43,22 +43,6 @@ body {
     transform: translate(-50%, -50%);
 }
 
-#kc-reset-password-form #kc-form-options {
-    float: left;
-}
-
-#kc-reset-password-form #kc-form-buttons {
-    float: right;
-}
-
-#kc-register-form #kc-form-options {
-    float: left;
-}
-
-#kc-register-form #kc-form-buttons {
-    float: right;
-}
-
 .clearfix {
     float: none;
     clear: both;
@@ -105,14 +89,6 @@ hr {
     float: left;
 }
 
-.register .register-field {
-    margin-bottom: 15px;
-}
-
-.register .register-button-container {
-    margin-top: 20px;
-}
-
 .reset-password .reset-password-field {
     margin-bottom: 15px;
 }
@@ -139,6 +115,41 @@ hr {
 
 .update-profile .update-profile-button-container {
     margin-top: 20px;
+}
+
+/*
+
+*/
+
+.mb {
+    margin-bottom: 6px;
+}
+.mt {
+    margin-top: 6px;
+}
+
+.ml {
+    margin-left: 6px;
+}
+.mr {
+    margin-right: 6px;
+}
+
+.mx {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+.my {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+.mx-a {
+    margin-left: auto;
+    margin-right: auto;
+}
+.my-a {
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 #kc-locale .mdc-select {

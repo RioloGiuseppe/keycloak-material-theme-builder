@@ -7,41 +7,43 @@
     <#elseif section = "form">
         <form id="kc-reset-password-form" class="form reset-password ${properties.kcFormClass!}" action="${url.loginAction}" method="post">
             <div class="reset-password-field ${properties.kcFormGroupClass!}">
-
-                <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!} <#if usernameEditDisabled??>mdc-text-field--disabled</#if>">
-                    <i class="material-icons mdc-text-field__icon" tabindex="-1" role="button">person</i>
-                    <input required id="username" class="mdc-text-field__input ${properties.kcInputClass!}" name="username" type="text" autofocus>
-                    <div class="${properties.kcLabelWrapperClass!}">
-                        <label for="username" class="mdc-floating-label ${properties.kcLabelClass!}">${msg("username")?no_esc}</label>
-                    </div>
-                    <div class="mdc-notched-outline">
-                        <svg>
-                            <path class="mdc-notched-outline__path"/>
-                        </svg>
-                    </div>
-                    <div class="mdc-notched-outline__idle"></div>
-                </div>
-
+                <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!} <#if usernameEditDisabled??>mdc-text-field--disabled</#if>" >
+                    <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">person</i>
+                    <input required id="username" class="mdc-text-field__input ${properties.kcInputClass!}" name="username" type="text" autofocus aria-labelledby="aria-username">
+                    <span class="mdc-notched-outline">
+                        <span class="mdc-notched-outline__leading"></span>
+                        <span class="mdc-notched-outline__notch">
+                            <span class="mdc-floating-label ${properties.kcLabelClass!}" id="aria-username">
+                                ${msg("username")?no_esc}
+                            </span>
+                        </span>
+                        <span class="mdc-notched-outline__trailing"></span>
+                    </span>
+                </span>
             </div>
-
             <div class="${properties.kcFormGroupClass!}">
                 <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
-                    <div class="${properties.kcFormOptionsWrapperClass!}">
-                        <span>
-                            <#--  <a class="btn btn-default btn-flat btn-block" href="${url.loginUrl}"><i class="fa fa-caret-left"></i>&nbsp;&nbsp;${msg("backToLogin")}</a>  -->
-                            <button class="mdc-button" onclick="window.location.href = ${url.loginUrl}" formnovalidate>
-                                <i class="material-icons mdc-button__icon" aria-hidden="true">arrow_back</i>
+                    <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
+                        <div class="${properties.kcFormButtonsWrapperClass!}">
+                            <a class="mdc-button mdc-button--outlined fullwidth my" href="${url.loginUrl}">
+                                <span class="mdc-button__ripple"></span>
                                 ${msg("backToLogin")?no_esc}
-                            </button>
-                        </span>
-                    </div>
+                            </a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div> 
                 </div>
-
-                <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
-                    <#--  <input class="btn btn-primary btn-flat btn-block ${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doSubmit")}"/>  -->
-                    <button class="mdc-button mdc-button--raised ${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}" type="submit">
-                        ${msg("doSubmit")?no_esc}
-                    </button>
+            </div>
+            <div class="${properties.kcFormGroupClass!}">
+                <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
+                    <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
+                        <div class="${properties.kcFormButtonsWrapperClass!}">
+                            <button class="mdc-button mdc-button--raised ${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!} fullwidth my" type="submit">
+                                ${msg("doSubmit")?no_esc}
+                            </button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div> 
                 </div>
             </div>
             <div class="clearfix"></div>

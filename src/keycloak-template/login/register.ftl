@@ -1,117 +1,176 @@
 <#import "template.ftl" as layout>
 <@layout.registrationLayout; section>
     <#if section = "title">
-        ${msg("registerWithTitle",(realm.displayName!''))?no_esc}
+        ${msg("registerTitle")?no_esc}
     <#elseif section = "header">
-        ${msg("registerWithTitleHtml",(realm.displayNameHtml!''))?no_esc}
+        ${msg("registerTitle")?no_esc}
     <#elseif section = "form">
         <form id="kc-register-form" class="register form ${properties.kcFormClass!}" action="${url.registrationAction}" method="post">
           <input type="text" readonly value="this is not a login form" style="display: none;">
           <input type="password" readonly value="this is not a login form" style="display: none;">
 
           <#if !realm.registrationEmailAsUsername>
-
-            <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
-                <i class="material-icons mdc-text-field__icon" tabindex="-1" role="button">person</i>
-                <input id="username" class="mdc-text-field__input ${properties.kcInputClass!}" name="username" type="text" autofocus value="${(register.formData.username!'')}">
-                <div class="${properties.kcLabelWrapperClass!}">
-                    <label for="username" class="mdc-floating-label ${properties.kcLabelClass!}">${msg("username")?no_esc}</label>
-                </div>
-                <div class="mdc-notched-outline">
-                    <svg>
-                        <path class="mdc-notched-outline__path"/>
-                    </svg>
-                </div>
-                <div class="mdc-notched-outline__idle"></div>
-            </div>
-
-          </#if>
-
-            <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
-                <i class="material-icons mdc-text-field__icon" tabindex="-1" role="button">person</i>
-                <input required id="firstName" class="mdc-text-field__input ${properties.kcInputClass!}" name="firstName" type="text" autofocus value="${(register.formData.firstName!'')}">
-                <div class="${properties.kcLabelWrapperClass!}">
-                    <label for="firstName" class="mdc-floating-label ${properties.kcLabelClass!}">${msg("firstName")?no_esc}</label>
-                </div>
-                <div class="mdc-notched-outline">
-                    <svg>
-                        <path class="mdc-notched-outline__path"/>
-                    </svg>
-                </div>
-                <div class="mdc-notched-outline__idle"></div>
-            </div>
-
-            <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
-                <i class="material-icons mdc-text-field__icon" tabindex="-1" role="button">person</i>
-                <input required id="lastName" class="mdc-text-field__input ${properties.kcInputClass!}" name="lastName" type="text" value="${(register.formData.lastName!'')}">
-                <div class="${properties.kcLabelWrapperClass!}">
-                    <label for="lastName" class="mdc-floating-label ${properties.kcLabelClass!}">${msg("lastName")?no_esc}</label>
-                </div>
-                <div class="mdc-notched-outline">
-                    <svg>
-                        <path class="mdc-notched-outline__path"/>
-                    </svg>
-                </div>
-                <div class="mdc-notched-outline__idle"></div>
-            </div>
-
-            <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
-                <i class="material-icons mdc-text-field__icon" tabindex="-1" role="button">email</i>
-                <input required id="email" class="mdc-text-field__input ${properties.kcInputClass!}" name="email" type="text" value="${(register.formData.email!'')}">
-                <div class="${properties.kcLabelWrapperClass!}">
-                    <label for="email" class="mdc-floating-label ${properties.kcLabelClass!}">${msg("email")?no_esc}</label>
-                </div>
-                <div class="mdc-notched-outline">
-                    <svg>
-                        <path class="mdc-notched-outline__path"/>
-                    </svg>
-                </div>
-                <div class="mdc-notched-outline__idle"></div>
-            </div>
-
-            <#if passwordRequired>
-
-            <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
-                <i class="material-icons mdc-text-field__icon" tabindex="-1" role="button">lock</i>
-                <input required id="password" class="mdc-text-field__input ${properties.kcInputClass!}" name="password" type="password">
-                <div class="${properties.kcLabelWrapperClass!}">
-                    <label for="password" class="mdc-floating-label ${properties.kcLabelClass!}">${msg("password")?no_esc}</label>
-                </div>
-                <div class="mdc-notched-outline">
-                    <svg>
-                        <path class="mdc-notched-outline__path"/>
-                    </svg>
-                </div>
-                <div class="mdc-notched-outline__idle"></div>
-            </div>
-
-            <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
-                <i class="material-icons mdc-text-field__icon" tabindex="-1" role="button">lock</i>
-                <input required id="password-confirm" class="mdc-text-field__input ${properties.kcInputClass!}" name="password-confirm" type="password">
-                <div class="${properties.kcLabelWrapperClass!}">
-                    <label for="password-confirm" class="mdc-floating-label ${properties.kcLabelClass!}">${msg("passwordConfirm")?no_esc}</label>
-                </div>
-                <div class="mdc-notched-outline">
-                    <svg>
-                        <path class="mdc-notched-outline__path"/>
-                    </svg>
-                </div>
-                <div class="mdc-notched-outline__idle"></div>
-            </div>
-
-            <#--  <div class="register-field ${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('password-confirm',properties.kcFormGroupErrorClass!)}">
-                <div class="${properties.kcLabelWrapperClass!}">
-                    <label for="password-confirm" class="${properties.kcLabelClass!}">${msg("passwordConfirm")} *</label>
-                </div>
-                <div class="${properties.kcInputWrapperClass!}">
-                    <input type="password" id="password-confirm" class="form-control ${properties.kcInputClass!}" name="password-confirm" />
-
-                    <div id="capsLockWarning2" style="font-weight: bold; color: maroon; margin: 0 0 10px 0; display: none;">
-                        <i class="fa fa-exclamation-triangle" style="color: #f0ad4e"></i>
-                        ${msg("capsLockWarning")}
+            <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
+                <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">person</i>
+                <input required id="username" class="mdc-text-field__input ${properties.kcInputClass!}" name="username" type="text" autofocus value="${(register.formData.username!'')}" 
+                aria-labelledby="aria-username"
+                aria-controls="input-error-username"
+                aria-describedby="input-error-username"
+                aria-invalid="<#if messagesPerField.existsError('username')>true</#if>">
+                <span class="mdc-notched-outline">
+                    <span class="mdc-notched-outline__leading"></span>
+                    <span class="mdc-notched-outline__notch">
+                        <span class="mdc-floating-label ${properties.kcLabelClass!}" id="aria-username">
+                            ${msg("username")?no_esc}
+                        </span>
+                    </span>
+                    <span class="mdc-notched-outline__trailing"></span>
+                </span>
+            </span>
+            <#if messagesPerField.existsError('username')>
+                <div class="mdc-text-field-helper-line">
+                    <div class="mdc-text-field-helper-text" id="input-error-username" aria-hidden="true" aria-live="polite">
+                        ${kcSanitize(messagesPerField.get('username'))?no_esc}
                     </div>
                 </div>
-            </div>  -->
+            </#if>  
+
+          </#if>
+            <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
+                <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">email</i>
+                <input required id="email" class="mdc-text-field__input ${properties.kcInputClass!}" name="email" type="text" autofocus value="${(register.formData.email!'')}" 
+                aria-labelledby="aria-email"
+                aria-controls="input-error-email"
+                aria-describedby="input-error-email"
+                aria-invalid="<#if messagesPerField.existsError('email')>true</#if>">
+                <span class="mdc-notched-outline">
+                    <span class="mdc-notched-outline__leading"></span>
+                    <span class="mdc-notched-outline__notch">
+                        <span class="mdc-floating-label ${properties.kcLabelClass!}" id="aria-email">
+                            ${msg("email")?no_esc}
+                        </span>
+                    </span>
+                    <span class="mdc-notched-outline__trailing"></span>
+                </span>
+            </span>
+            <#if messagesPerField.existsError('email')>
+                <div class="mdc-text-field-helper-line">
+                    <div class="mdc-text-field-helper-text" id="input-error-email" aria-hidden="true" aria-live="polite">
+                        ${kcSanitize(messagesPerField.get('email'))?no_esc}
+                    </div>
+                </div>
+            </#if> 
+            <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
+                <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">person</i>
+                <input required id="firstName" class="mdc-text-field__input ${properties.kcInputClass!}" name="firstName" type="text" autofocus 
+                value="${(register.formData.firstName!'')}" 
+                aria-labelledby="aria-firstName" 
+                aria-controls="input-error-firstName"
+                aria-describedby="input-error-firstName"
+                aria-invalid="<#if messagesPerField.existsError('firstName')>true</#if>">
+                <span class="mdc-notched-outline">
+                    <span class="mdc-notched-outline__leading"></span>
+                    <span class="mdc-notched-outline__notch">
+                        <span class="mdc-floating-label ${properties.kcLabelClass!}" id="aria-firstName">
+                            ${msg("firstName")?no_esc}
+                        </span>
+                    </span>
+                    <span class="mdc-notched-outline__trailing"></span>
+                </span>
+            </span>
+            <#if messagesPerField.existsError('firstName')>
+                <div class="mdc-text-field-helper-line">
+                    <div class="mdc-text-field-helper-text" id="input-error-firstName" aria-hidden="true" aria-live="polite">
+                        ${kcSanitize(messagesPerField.get('firstName'))?no_esc}
+                    </div>
+                </div>
+            </#if>    
+            <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
+                <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">person</i>
+                <input required id="lastName" class="mdc-text-field__input ${properties.kcInputClass!}" name="lastName" type="text" autofocus value="${(register.formData.lastName!'')}" 
+                aria-labelledby="aria-lastName"
+                aria-controls="input-error-lastName"
+                aria-describedby="input-error-lastName"
+                aria-invalid="<#if messagesPerField.existsError('lastName')>true</#if>">
+                <span class="mdc-notched-outline">
+                    <span class="mdc-notched-outline__leading"></span>
+                    <span class="mdc-notched-outline__notch">
+                        <span class="mdc-floating-label ${properties.kcLabelClass!}" id="aria-lastName">
+                            ${msg("lastName")?no_esc}
+                        </span>
+                    </span>
+                    <span class="mdc-notched-outline__trailing"></span>
+                </span>
+            </span>
+            <#if messagesPerField.existsError('lastName')>
+                <div class="mdc-text-field-helper-line">
+                    <div class="mdc-text-field-helper-text" id="input-error-lastName" aria-hidden="true" aria-live="polite">
+                        ${kcSanitize(messagesPerField.get('lastName'))?no_esc}
+                    </div>
+                </div>
+            </#if>  
+            <#if passwordRequired>
+                <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
+                    <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">lock</i>
+                    <input required id="password" class="mdc-text-field__input ${properties.kcInputClass!}" name="password" type="password" autofocus 
+                    aria-labelledby="aria-password"
+                    aria-controls="input-error-password"
+                    aria-describedby="input-error-password"
+                    aria-invalid="<#if messagesPerField.existsError('password')>true</#if>">
+                    <span class="mdc-notched-outline">
+                        <span class="mdc-notched-outline__leading"></span>
+                        <span class="mdc-notched-outline__notch">
+                            <span class="mdc-floating-label ${properties.kcLabelClass!}" id="aria-password">
+                                ${msg("password")?no_esc}
+                            </span>
+                        </span>
+                        <span class="mdc-notched-outline__trailing"></span>
+                    </span>
+                </span>
+                <#if messagesPerField.existsError('password')>
+                    <div class="mdc-text-field-helper-line">
+                        <div class="mdc-text-field-helper-text" id="input-error-password" aria-hidden="true" aria-live="polite">
+                            ${kcSanitize(messagesPerField.get('password'))?no_esc}
+                        </div>
+                    </div>
+                </#if> 
+                <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
+                    <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">lock</i>
+                    <input required id="password-confirm" class="mdc-text-field__input ${properties.kcInputClass!}" name="password-confirm" type="password" autofocus 
+                    aria-labelledby="aria-password-confirm"
+                                    aria-controls="input-error-passwordConfirm"
+                    aria-describedby="input-error-passwordConfirm"
+                    aria-invalid="<#if messagesPerField.existsError('passwordConfirm')>true</#if>">
+                    <span class="mdc-notched-outline">
+                        <span class="mdc-notched-outline__leading"></span>
+                        <span class="mdc-notched-outline__notch">
+                            <span class="mdc-floating-label ${properties.kcLabelClass!}" id="aria-password-confirm">
+                                ${msg("passwordConfirm")?no_esc}
+                            </span>
+                        </span>
+                        <span class="mdc-notched-outline__trailing"></span>
+                    </span>
+                </span>
+                <#if messagesPerField.existsError('passwordConfirm')>
+                    <div class="mdc-text-field-helper-line">
+                        <div class="mdc-text-field-helper-text" id="input-error-passwordConfirm" aria-hidden="true" aria-live="polite">
+                            ${kcSanitize(messagesPerField.get('passwordConfirm'))?no_esc}
+                        </div>
+                    </div>
+                </#if> 
+                <#--  <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('password-confirm',properties.kcFormGroupErrorClass!)}">
+                    <div class="${properties.kcLabelWrapperClass!}">
+                        <label for="password-confirm" class="${properties.kcLabelClass!}">${msg("passwordConfirm")} *</label>
+                    </div>
+                    <div class="${properties.kcInputWrapperClass!}">
+                        <input type="password" id="password-confirm" class="form-control ${properties.kcInputClass!}" name="password-confirm" />
+
+                        <div id="capsLockWarning2" style="font-weight: bold; color: maroon; margin: 0 0 10px 0; display: none;">
+                            <i class="fa fa-exclamation-triangle" style="color: #f0ad4e"></i>
+                            ${msg("capsLockWarning")}
+                        </div>
+                    </div>
+                </div>  -->
             </#if>
 
             <#if recaptchaRequired??>
@@ -121,26 +180,32 @@
                 </div>
             </div>
             </#if>
-
-            <div class="${properties.kcFormGroupClass!} register-button-container">
-
+            <div class="${properties.kcFormGroupClass!}">
                 <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
-                    <div class="${properties.kcFormOptionsWrapperClass!}">
-                        <span>
-                            <button class="mdc-button" onclick="window.location.href = ${url.loginUrl}" formnovalidate>
-                                <i class="material-icons mdc-button__icon" aria-hidden="true">arrow_back</i>
+                    <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
+                        <div class="${properties.kcFormButtonsWrapperClass!}">
+                            <a class="mdc-button mdc-button--outlined fullwidth my" href="${url.loginUrl}">
+                                <span class="mdc-button__ripple"></span>
                                 ${msg("backToLogin")?no_esc}
-                            </button>
-                        </span>
-                    </div>
-                </div>
-
-                <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
-                    <button class="mdc-button mdc-button--raised ${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}" type="submit">
-                        ${msg("doRegister")?no_esc}
-                    </button>
+                            </a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div> 
                 </div>
             </div>
+            <div class="${properties.kcFormGroupClass!}">
+                <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
+                    <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
+                        <div class="${properties.kcFormButtonsWrapperClass!}">
+                            <button class="mdc-button mdc-button--raised ${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!} fullwidth my" type="submit">
+                                ${msg("doRegister")?no_esc}
+                            </button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div> 
+                </div>
+            </div>
+
         </form>
     </#if>
 </@layout.registrationLayout>

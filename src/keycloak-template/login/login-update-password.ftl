@@ -8,33 +8,43 @@
         <form id="kc-passwd-update-form" class="form update-password ${properties.kcFormClass!}" action="${url.loginAction}" method="post">
             <input type="text" readonly value="this is not a login form" style="display: none;">
             <input type="password" readonly value="this is not a login form" style="display: none;">
+            <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
+                <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">lock</i>
+                <input required id="password-new" class="mdc-text-field__input ${properties.kcInputClass!}" name="password-new" type="text" autofocus autocomplete="off" aria-labelledby="aria-password-new">
+                <span class="mdc-notched-outline">
+                    <span class="mdc-notched-outline__leading"></span>
+                    <span class="mdc-notched-outline__notch">
+                        <span class="mdc-floating-label ${properties.kcLabelClass!}" id="aria-password-new">
+                            ${msg("passwordNew")?no_esc}
+                        </span>
+                    </span>
+                    <span class="mdc-notched-outline__trailing"></span>
+                </span>
+            </span>
 
-            <div class="update-password-field ${properties.kcFormGroupClass!}">
-                <div class="${properties.kcLabelWrapperClass!}">
-                    <label for="password-new" class="${properties.kcLabelClass!}">${msg("passwordNew")}</label>
-                </div>
-                <div class="${properties.kcInputWrapperClass!}">
-                    <input type="password" id="password-new" name="password-new" class="form-control ${properties.kcInputClass!}" autofocus autocomplete="off" />
-                </div>
-            </div>
-
-            <div class="update-password-field ${properties.kcFormGroupClass!}">
-                <div class="${properties.kcLabelWrapperClass!}">
-                    <label for="password-confirm" class="${properties.kcLabelClass!}">${msg("passwordConfirm")}</label>
-                </div>
-                <div class="${properties.kcInputWrapperClass!}">
-                    <input type="password" id="password-confirm" name="password-confirm" class="form-control ${properties.kcInputClass!}" autocomplete="off" />
-                </div>
-            </div>
-
-            <div class="${properties.kcFormGroupClass!} row update-password-button-container">
-                <div id="kc-form-options" class="${properties.kcFormOptionsClass!} col-xs-6 col-sm-8">
-                    <div class="${properties.kcFormOptionsWrapperClass!}">
-                    </div>
-                </div>
-
-                <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!} col-xs-6 col-sm-4">
-                    <input class="btn btn-primary btn-flat btn-block ${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doSubmit")}"/>
+            <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
+                <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">lock</i>
+                <input required id="password-confirm" class="mdc-text-field__input ${properties.kcInputClass!}" name="password-confirm" type="text" autofocus aria-labelledby="aria-password-confirm">
+                <span class="mdc-notched-outline">
+                    <span class="mdc-notched-outline__leading"></span>
+                    <span class="mdc-notched-outline__notch">
+                        <span class="mdc-floating-label ${properties.kcLabelClass!}" id="aria-password-confirm">
+                            ${msg("passwordConfirm")?no_esc}
+                        </span>
+                    </span>
+                    <span class="mdc-notched-outline__trailing"></span>
+                </span>
+            </span>
+            <div class="${properties.kcFormGroupClass!}">
+                <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
+                    <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
+                        <div class="${properties.kcFormButtonsWrapperClass!}">
+                            <button class="mdc-button mdc-button--raised ${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!} fullwidth my" type="submit">
+                                ${msg("doSubmit")?no_esc}
+                            </button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div> 
                 </div>
             </div>
         </form>
