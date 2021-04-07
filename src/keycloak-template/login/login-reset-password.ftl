@@ -31,10 +31,10 @@
                     </span>
                 </span>
                 <#if messagesPerField.existsError('username')>
-                    <div class="mdc-text-field-helper-line">
-                        <div class="mdc-text-field-helper-text ${properties.kcInputErrorMessageClass!}" id="input-error-username" aria-hidden="true" aria-live="polite">
+                    <div class="error-message ${properties.kcInputErrorMessageClass!}">
+                        <span aria-hidden="true" aria-live="polite">
                             ${kcSanitize(messagesPerField.get('username'))?no_esc}
-                        </div>
+                        </span>
                     </div>
                 </#if>
             </div>

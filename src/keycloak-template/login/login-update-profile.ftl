@@ -9,7 +9,8 @@
             <#if user.editUsernameAllowed>
             <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
                 <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">person</i>
-                <input required id="username" class="mdc-text-field__input ${properties.kcInputClass!}" name="username" type="text" autofocus value="${(user.username!'')}" aria-labelledby="aria-username">
+                <input required id="username" class="mdc-text-field__input ${properties.kcInputClass!}" name="username" type="text" autofocus value="${(user.username!'')}" 
+                aria-labelledby="aria-username" aria-invalid="<#if messagesPerField.existsError('username')>true</#if>">
                 <span class="mdc-notched-outline">
                     <span class="mdc-notched-outline__leading"></span>
                     <span class="mdc-notched-outline__notch">
@@ -20,10 +21,18 @@
                     <span class="mdc-notched-outline__trailing"></span>
                 </span>
             </span>
+            <#if messagesPerField.existsError('username')>
+                <div class="error-message ${properties.kcInputErrorMessageClass!}">
+                    <span aria-hidden="true" aria-live="polite">
+                        ${kcSanitize(messagesPerField.get('username'))?no_esc}
+                    </span>
+                </div>
+            </#if>    
             </#if>
             <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!} ${messagesPerField.printIfExists('email',properties.kcFormGroupErrorClass!)}">
                 <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">email</i>
-                <input required id="email" class="mdc-text-field__input ${properties.kcInputClass!}" name="email" type="text" autofocus value="${(user.email!'')}" aria-labelledby="aria-email">
+                <input required id="email" class="mdc-text-field__input ${properties.kcInputClass!}" name="email" type="text" autofocus value="${(user.email!'')}"
+                aria-labelledby="aria-email" aria-invalid="<#if messagesPerField.existsError('email')>true</#if>">
                 <span class="mdc-notched-outline">
                     <span class="mdc-notched-outline__leading"></span>
                     <span class="mdc-notched-outline__notch">
@@ -34,9 +43,17 @@
                     <span class="mdc-notched-outline__trailing"></span>
                 </span>
             </span>
+            <#if messagesPerField.existsError('email')>
+                <div class="error-message ${properties.kcInputErrorMessageClass!}">
+                    <span aria-hidden="true" aria-live="polite">
+                        ${kcSanitize(messagesPerField.get('email'))?no_esc}
+                    </span>
+                </div>
+            </#if>    
             <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!} ${messagesPerField.printIfExists('firstName',properties.kcFormGroupErrorClass!)}">
                 <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">person</i>
-                <input required id="firstName" class="mdc-text-field__input ${properties.kcInputClass!}" name="firstName" type="text" autofocus value="${(user.firstName!'')}" aria-labelledby="aria-firstName">
+                <input required id="firstName" class="mdc-text-field__input ${properties.kcInputClass!}" name="firstName" type="text" autofocus value="${(user.firstName!'')}" 
+                aria-labelledby="aria-firstName" aria-invalid="<#if messagesPerField.existsError('firstName')>true</#if>">
                 <span class="mdc-notched-outline">
                     <span class="mdc-notched-outline__leading"></span>
                     <span class="mdc-notched-outline__notch">
@@ -47,9 +64,17 @@
                     <span class="mdc-notched-outline__trailing"></span>
                 </span>
             </span>
+            <#if messagesPerField.existsError('firstName')>
+                <div class="error-message ${properties.kcInputErrorMessageClass!}">
+                    <span aria-hidden="true" aria-live="polite">
+                        ${kcSanitize(messagesPerField.get('firstName'))?no_esc}
+                    </span>
+                </div>
+            </#if>    
             <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
                 <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">person</i>
-                <input required id="lastName" class="mdc-text-field__input ${properties.kcInputClass!}" name="lastName" type="text" autofocus value="${(user.lastName!'')}" aria-labelledby="aria-lastName">
+                <input required id="lastName" class="mdc-text-field__input ${properties.kcInputClass!}" name="lastName" type="text" autofocus value="${(user.lastName!'')}" 
+                aria-labelledby="aria-lastName" aria-invalid="<#if messagesPerField.existsError('lastName')>true</#if>">
                 <span class="mdc-notched-outline">
                     <span class="mdc-notched-outline__leading"></span>
                     <span class="mdc-notched-outline__notch">
@@ -60,6 +85,13 @@
                     <span class="mdc-notched-outline__trailing"></span>
                 </span>
             </span>
+            <#if messagesPerField.existsError('lastName')>
+                <div class="error-message ${properties.kcInputErrorMessageClass!}">
+                    <span aria-hidden="true" aria-live="polite">
+                        ${kcSanitize(messagesPerField.get('lastName'))?no_esc}
+                    </span>
+                </div>
+            </#if>    
             <div class="${properties.kcFormGroupClass!}">
                 <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
                     <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">

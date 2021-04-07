@@ -14,7 +14,12 @@
                     <div class="${properties.kcInputWrapperClass!}">
                         <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!} <#if usernameEditDisabled??>mdc-text-field--disabled</#if>">
                             <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">person</i>
-                            <input required id="username" class="mdc-text-field__input ${properties.kcInputClass!}" name="username" value="${(login.username!'')}" type="text" autofocus autocomplete="off" aria-labelledby="aria-username" <#if usernameEditDisabled??>disabled</#if> >
+                                <#if usernameEditDisabled??>
+                                    <input id="username" class="mdc-text-field__input ${properties.kcInputClass!}" name="username" value="${(login.username!'')}" type="text" disabled aria-labelledby="aria-username" />
+                                <#else>
+                                    <input required id="username" class="mdc-text-field__input ${properties.kcInputClass!}" name="username" value="${(login.username!'')}" type="text" autofocus autocomplete="off"
+                                        aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>" aria-labelledby="aria-username" />
+                                </#if>
                             <span class="mdc-notched-outline">
                                 <span class="mdc-notched-outline__leading"></span>
                                 <span class="mdc-notched-outline__notch">
@@ -31,13 +36,21 @@
                                 <span class="mdc-notched-outline__trailing"></span>
                             </span>
                         </span>
+                        <#if !usernameEditDisabled?? && messagesPerField.existsError('username','password')>
+                            <div class="error-message ${properties.kcInputErrorMessageClass!}">
+                                <span aria-hidden="true" aria-live="polite">
+                                    ${kcSanitize(messagesPerField.getFirstError('username','password'))?no_esc}
+                                </span>
+                            </div>
+                        </#if>
                     </div>
                 </div>
                 <div class="password-container ${properties.kcFormGroupClass!}">
                     <div class="${properties.kcInputWrapperClass!}">
                         <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
                             <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">lock</i>
-                            <input required id="password" class="mdc-text-field__input ${properties.kcInputClass!}" name="password" type="password" autocomplete="off"  aria-labelledby="aria-password">
+                            <input required id="password" class="mdc-text-field__input ${properties.kcInputClass!}" name="password" type="password" autocomplete="off" 
+                            aria-labelledby="aria-password" aria-invalid="<#if messagesPerField.existsError('username','password')>true</#if>">
                             <span class="mdc-notched-outline">
                                 <span class="mdc-notched-outline__leading"></span>
                                 <span class="mdc-notched-outline__notch">
@@ -54,7 +67,6 @@
 					  ${msg("capsLockWarning")}
                     </div> 
                 </div>
-
                 <div class="${properties.kcFormGroupClass!}">
                     <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
                         <#if realm.rememberMe && !usernameEditDisabled??>
@@ -83,6 +95,7 @@
                     <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
                         <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
                             <div class="${properties.kcFormButtonsWrapperClass!}">
+                                <input type="hidden" id="id-hidden-input" name="credentialId" <#if auth.selectedCredential?has_content>value="${auth.selectedCredential}"</#if>/>
                                 <button class="mdc-button mdc-button--raised ${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!} fullwidth" name="login" id="kc-login" type="submit">
                                     ${msg("doLogIn")}
                                 </button>
@@ -108,14 +121,9 @@
         </#if>
     <#elseif section = "info" >
         <div class="${properties.kcFormGroupClass!}">
-            <#if (realm.password && realm.registrationAllowed && !usernameEditDisabled??) || realm.resetPasswordAllowed>
-                
-                <div>
-                    <#if realm.password && realm.registrationAllowed && !usernameEditDisabled??>
-                        <div id="kc-registration" <#if realm.password && realm.registrationAllowed && !usernameEditDisabled?? && realm.resetPasswordAllowed>style="margin: 10px 0px; text-align: right;"</#if>>
-                            <span>${msg("noAccount")} <a href="${url.registrationUrl}">${msg("doRegister")}</a></span>
-                        </div>
-                    </#if>
+            <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
+                <div id="kc-registration">
+                    <span>${msg("noAccount")} <a href="${url.registrationUrl}">${msg("doRegister")}</a></span>
                 </div>
             </#if>
         </div>

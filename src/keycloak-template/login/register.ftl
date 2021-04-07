@@ -14,8 +14,6 @@
                 <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">person</i>
                 <input required id="username" class="mdc-text-field__input ${properties.kcInputClass!}" name="username" type="text" autofocus value="${(register.formData.username!'')}" 
                 aria-labelledby="aria-username"
-                aria-controls="input-error-username"
-                aria-describedby="input-error-username"
                 aria-invalid="<#if messagesPerField.existsError('username')>true</#if>">
                 <span class="mdc-notched-outline">
                     <span class="mdc-notched-outline__leading"></span>
@@ -28,20 +26,17 @@
                 </span>
             </span>
             <#if messagesPerField.existsError('username')>
-                <div class="mdc-text-field-helper-line">
-                    <div class="mdc-text-field-helper-text" id="input-error-username" aria-hidden="true" aria-live="polite">
-                        ${kcSanitize(messagesPerField.get('username'))?no_esc}
-                    </div>
-                </div>
+            <div class="error-message ${properties.kcInputErrorMessageClass!}">
+                <span aria-hidden="true" aria-live="polite">
+                    ${kcSanitize(messagesPerField.get('username'))?no_esc}
+                </span>
+            </div>
             </#if>  
-
           </#if>
             <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
                 <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">email</i>
                 <input required id="email" class="mdc-text-field__input ${properties.kcInputClass!}" name="email" type="text" autofocus value="${(register.formData.email!'')}" 
                 aria-labelledby="aria-email"
-                aria-controls="input-error-email"
-                aria-describedby="input-error-email"
                 aria-invalid="<#if messagesPerField.existsError('email')>true</#if>">
                 <span class="mdc-notched-outline">
                     <span class="mdc-notched-outline__leading"></span>
@@ -54,10 +49,10 @@
                 </span>
             </span>
             <#if messagesPerField.existsError('email')>
-                <div class="mdc-text-field-helper-line">
-                    <div class="mdc-text-field-helper-text" id="input-error-email" aria-hidden="true" aria-live="polite">
+                <div class="error-message ${properties.kcInputErrorMessageClass!}">
+                    <span aria-hidden="true" aria-live="polite">
                         ${kcSanitize(messagesPerField.get('email'))?no_esc}
-                    </div>
+                    </span>
                 </div>
             </#if> 
             <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
@@ -65,8 +60,6 @@
                 <input required id="firstName" class="mdc-text-field__input ${properties.kcInputClass!}" name="firstName" type="text" autofocus 
                 value="${(register.formData.firstName!'')}" 
                 aria-labelledby="aria-firstName" 
-                aria-controls="input-error-firstName"
-                aria-describedby="input-error-firstName"
                 aria-invalid="<#if messagesPerField.existsError('firstName')>true</#if>">
                 <span class="mdc-notched-outline">
                     <span class="mdc-notched-outline__leading"></span>
@@ -79,18 +72,16 @@
                 </span>
             </span>
             <#if messagesPerField.existsError('firstName')>
-                <div class="mdc-text-field-helper-line">
-                    <div class="mdc-text-field-helper-text" id="input-error-firstName" aria-hidden="true" aria-live="polite">
+                <div class="error-message ${properties.kcInputErrorMessageClass!}">
+                    <span aria-hidden="true" aria-live="polite">
                         ${kcSanitize(messagesPerField.get('firstName'))?no_esc}
-                    </div>
+                    </span>
                 </div>
             </#if>    
             <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
                 <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">person</i>
                 <input required id="lastName" class="mdc-text-field__input ${properties.kcInputClass!}" name="lastName" type="text" autofocus value="${(register.formData.lastName!'')}" 
                 aria-labelledby="aria-lastName"
-                aria-controls="input-error-lastName"
-                aria-describedby="input-error-lastName"
                 aria-invalid="<#if messagesPerField.existsError('lastName')>true</#if>">
                 <span class="mdc-notched-outline">
                     <span class="mdc-notched-outline__leading"></span>
@@ -103,10 +94,10 @@
                 </span>
             </span>
             <#if messagesPerField.existsError('lastName')>
-                <div class="mdc-text-field-helper-line">
-                    <div class="mdc-text-field-helper-text" id="input-error-lastName" aria-hidden="true" aria-live="polite">
+                <div class="error-message ${properties.kcInputErrorMessageClass!}">
+                    <span aria-hidden="true" aria-live="polite">
                         ${kcSanitize(messagesPerField.get('lastName'))?no_esc}
-                    </div>
+                    </span>
                 </div>
             </#if>  
             <#if passwordRequired>
@@ -114,8 +105,6 @@
                     <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">lock</i>
                     <input required id="password" class="mdc-text-field__input ${properties.kcInputClass!}" name="password" type="password" autofocus 
                     aria-labelledby="aria-password"
-                    aria-controls="input-error-password"
-                    aria-describedby="input-error-password"
                     aria-invalid="<#if messagesPerField.existsError('password')>true</#if>">
                     <span class="mdc-notched-outline">
                         <span class="mdc-notched-outline__leading"></span>
@@ -128,18 +117,16 @@
                     </span>
                 </span>
                 <#if messagesPerField.existsError('password')>
-                    <div class="mdc-text-field-helper-line">
-                        <div class="mdc-text-field-helper-text" id="input-error-password" aria-hidden="true" aria-live="polite">
+                    <div class="error-message ${properties.kcInputErrorMessageClass!}">
+                        <span aria-hidden="true" aria-live="polite">
                             ${kcSanitize(messagesPerField.get('password'))?no_esc}
-                        </div>
+                        </span>
                     </div>
                 </#if> 
                 <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
                     <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">lock</i>
                     <input required id="password-confirm" class="mdc-text-field__input ${properties.kcInputClass!}" name="password-confirm" type="password" autofocus 
                     aria-labelledby="aria-password-confirm"
-                                    aria-controls="input-error-passwordConfirm"
-                    aria-describedby="input-error-passwordConfirm"
                     aria-invalid="<#if messagesPerField.existsError('passwordConfirm')>true</#if>">
                     <span class="mdc-notched-outline">
                         <span class="mdc-notched-outline__leading"></span>
@@ -152,25 +139,12 @@
                     </span>
                 </span>
                 <#if messagesPerField.existsError('passwordConfirm')>
-                    <div class="mdc-text-field-helper-line">
-                        <div class="mdc-text-field-helper-text" id="input-error-passwordConfirm" aria-hidden="true" aria-live="polite">
+                    <div class="error-message ${properties.kcInputErrorMessageClass!}">
+                        <span aria-hidden="true" aria-live="polite">
                             ${kcSanitize(messagesPerField.get('passwordConfirm'))?no_esc}
-                        </div>
+                        </span>
                     </div>
                 </#if> 
-                <#--  <div class="${properties.kcFormGroupClass!} ${messagesPerField.printIfExists('password-confirm',properties.kcFormGroupErrorClass!)}">
-                    <div class="${properties.kcLabelWrapperClass!}">
-                        <label for="password-confirm" class="${properties.kcLabelClass!}">${msg("passwordConfirm")} *</label>
-                    </div>
-                    <div class="${properties.kcInputWrapperClass!}">
-                        <input type="password" id="password-confirm" class="form-control ${properties.kcInputClass!}" name="password-confirm" />
-
-                        <div id="capsLockWarning2" style="font-weight: bold; color: maroon; margin: 0 0 10px 0; display: none;">
-                            <i class="fa fa-exclamation-triangle" style="color: #f0ad4e"></i>
-                            ${msg("capsLockWarning")}
-                        </div>
-                    </div>
-                </div>  -->
             </#if>
 
             <#if recaptchaRequired??>

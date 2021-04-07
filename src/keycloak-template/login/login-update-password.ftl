@@ -10,7 +10,8 @@
             <input type="password" readonly value="this is not a login form" style="display: none;">
             <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
                 <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">lock</i>
-                <input required id="password-new" class="mdc-text-field__input ${properties.kcInputClass!}" name="password-new" type="text" autofocus autocomplete="off" aria-labelledby="aria-password-new">
+                <input required id="password-new" class="mdc-text-field__input ${properties.kcInputClass!}" name="password-new" type="text" autofocus 
+                autocomplete="off" aria-labelledby="aria-password-new" aria-invalid="<#if messagesPerField.existsError('password','password-confirm')>true</#if>">
                 <span class="mdc-notched-outline">
                     <span class="mdc-notched-outline__leading"></span>
                     <span class="mdc-notched-outline__notch">
@@ -21,10 +22,17 @@
                     <span class="mdc-notched-outline__trailing"></span>
                 </span>
             </span>
-
+            <#if messagesPerField.existsError('password')>
+                <div class="error-message ${properties.kcInputErrorMessageClass!}">
+                    <span aria-hidden="true" aria-live="polite">
+                        ${kcSanitize(messagesPerField.get('password'))?no_esc}
+                    </span>
+                </div>
+            </#if> 
             <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
                 <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">lock</i>
-                <input required id="password-confirm" class="mdc-text-field__input ${properties.kcInputClass!}" name="password-confirm" type="text" autofocus aria-labelledby="aria-password-confirm">
+                <input required id="password-confirm" class="mdc-text-field__input ${properties.kcInputClass!}" name="password-confirm" type="text" autofocus
+                 autocomplete="off"  aria-labelledby="aria-password-confirm" aria-invalid="<#if messagesPerField.existsError('password-confirm')>true</#if>">
                 <span class="mdc-notched-outline">
                     <span class="mdc-notched-outline__leading"></span>
                     <span class="mdc-notched-outline__notch">
@@ -35,6 +43,13 @@
                     <span class="mdc-notched-outline__trailing"></span>
                 </span>
             </span>
+            <#if messagesPerField.existsError('password-confirm')>
+                <div class="error-message ${properties.kcInputErrorMessageClass!}">
+                    <span aria-hidden="true" aria-live="polite">
+                        ${kcSanitize(messagesPerField.get('password-confirm'))?no_esc}
+                    </span>
+                </div>
+            </#if> 
             <div class="${properties.kcFormGroupClass!}">
                 <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
                     <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
