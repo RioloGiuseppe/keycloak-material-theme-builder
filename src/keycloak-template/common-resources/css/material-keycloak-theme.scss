@@ -1,0 +1,164 @@
+@import "https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+/* without this, the fields all expand
+   when the MDC JavaScript is run. */
+/*
+
+*/
+body {
+  font-family: "Roboto", sans-serif;
+}
+.title {
+  margin-bottom: 15px;
+}
+.mdc-text-field {
+  margin-top: 16px;
+  width: 100%;
+}
+#kc-header {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  text-align: center;
+  margin-bottom: 10px;
+  img {
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+#kc-content {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  box-shadow: 0 5px 6px -3px rgba(0, 0, 0, 0.2),
+    0 9px 12px 1px rgba(0, 0, 0, 0.14), 0 3px 16px 2px rgba(0, 0, 0, 0.12);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.clearfix {
+  float: none;
+  clear: both;
+}
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.24);
+}
+.mdc-text-field--outlined {
+  height: 41px;
+  overflow: visible;
+  margin: 12px 0px;
+}
+.fullwidth {
+  width: 100%;
+}
+#kc-error-message {
+  p {
+    margin: 0;
+  }
+}
+.remember-me-checkbox {
+  float: left;
+}
+
+.update-password {
+  .update-password-button-container {
+    margin-top: 20px;
+  }
+}
+.config-totp {
+  .config-totp-button-container {
+    margin-top: 15px;
+  }
+}
+.totp {
+  .totp-button-container {
+    margin-top: 15px;
+  }
+}
+.update-profile {
+  .update-profile-field {
+    margin-top: 15px;
+  }
+  .update-profile-button-container {
+    margin-top: 20px;
+  }
+}
+.mb {
+  margin-bottom: 6px;
+}
+.mt {
+  margin-top: 6px;
+}
+.ml {
+  margin-left: 6px;
+}
+.mr {
+  margin-right: 6px;
+}
+.mx {
+  margin-left: 6px;
+  margin-right: 6px;
+}
+.my {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+.mx-a {
+  margin-left: auto;
+  margin-right: auto;
+}
+.my-a {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+#kc-locale {
+  .mdc-select {
+    width: 100%;
+    .mdc-select__anchor {
+      height: unset;
+      i.material-icons.mdc-select__icon {
+        font-size: 20px;
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .mdc-list-item {
+      height: 34px;
+    }
+  }
+}
+#kc-social-providers {
+  text-align: center;
+  a {
+    height: 56px;
+    width: 56px;
+    min-width: 56px !important;
+    max-width: 56px !important;
+    color: rgba(0, 0, 0, 0.54);
+    margin: 0px 6px;
+    i.material-icons.mdc-button__icon {
+      margin-left: -8px;
+      margin-right: -1px;
+      display: inline-block;
+      width: 43px;
+      height: 49px;
+      font-size: 50px !important;
+      vertical-align: top;
+    }
+  }
+}
+@media (max-width: 768px) {
+  #kc-content {
+    width: 90%;
+  }
+}
+@media (min-width: 769px) {
+  #kc-content {
+    width: 360px;
+  }
+}

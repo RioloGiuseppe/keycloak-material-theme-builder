@@ -10,6 +10,7 @@
           <input type="password" readonly value="this is not a login form" style="display: none;">
 
           <#if !realm.registrationEmailAsUsername>
+          <div class="form-textbox">
             <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
                 <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">person</i>
                 <input required id="username" class="mdc-text-field__input ${properties.kcInputClass!}" name="username" type="text" autofocus value="${(register.formData.username!'')}" 
@@ -31,8 +32,10 @@
                     ${kcSanitize(messagesPerField.get('username'))?no_esc}
                 </span>
             </div>
-            </#if>  
+            </#if>
+              </div>
           </#if>
+          <div class="form-textbox">
             <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
                 <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">email</i>
                 <input required id="email" class="mdc-text-field__input ${properties.kcInputClass!}" name="email" type="text" autofocus value="${(register.formData.email!'')}" 
@@ -55,6 +58,8 @@
                     </span>
                 </div>
             </#if> 
+            </div>
+            <div class="form-textbox">
             <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
                 <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">person</i>
                 <input required id="firstName" class="mdc-text-field__input ${properties.kcInputClass!}" name="firstName" type="text" autofocus 
@@ -77,7 +82,9 @@
                         ${kcSanitize(messagesPerField.get('firstName'))?no_esc}
                     </span>
                 </div>
-            </#if>    
+            </#if> 
+            </div>   
+            <div class="form-textbox">
             <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
                 <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">person</i>
                 <input required id="lastName" class="mdc-text-field__input ${properties.kcInputClass!}" name="lastName" type="text" autofocus value="${(register.formData.lastName!'')}" 
@@ -99,8 +106,10 @@
                         ${kcSanitize(messagesPerField.get('lastName'))?no_esc}
                     </span>
                 </div>
-            </#if>  
+            </#if> 
+             </div>
             <#if passwordRequired>
+            <div class="form-textbox">
                 <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
                     <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">lock</i>
                     <input required id="password" class="mdc-text-field__input ${properties.kcInputClass!}" name="password" type="password" autofocus 
@@ -123,6 +132,8 @@
                         </span>
                     </div>
                 </#if> 
+                </div>
+                <div class="form-textbox">
                 <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
                     <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">lock</i>
                     <input required id="password-confirm" class="mdc-text-field__input ${properties.kcInputClass!}" name="password-confirm" type="password" autofocus 
@@ -145,6 +156,7 @@
                         </span>
                     </div>
                 </#if> 
+                </div>
             </#if>
 
             <#if recaptchaRequired??>

@@ -25,7 +25,7 @@
             </div>
             <input type="hidden" id="totpSecret" name="totpSecret" value="${totp.totpSecret}" />
         </div>
-        <div class="row config-totp-button-container">
+        <div class="row config-totp-button-container form-textbox">
             <div class="col-xs-6 col-xs-offset-6 col-sm-4 col-sm-offset-8">
                 <input class="btn btn-primary btn-flat btn-block ${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}" type="submit" value="${msg("doSubmit")}"/>
             </div>

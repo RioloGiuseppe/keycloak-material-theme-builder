@@ -5,4 +5,7 @@
   $on-secondary: #fff
 );
 
-@use "./material.scss"
+@use "./material.scss";
+@use "../keycloak-template/common-resources/css/bootstrap-material-design-alerts.scss";
+@use "../keycloak-template/common-resources/css/material-keycloak-theme.scss";
+@use "../keycloak-template/common-resources/css/custom.scss";

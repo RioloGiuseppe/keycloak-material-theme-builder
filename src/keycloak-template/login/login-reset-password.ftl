@@ -6,7 +6,7 @@
         ${msg("emailForgotTitle")?no_esc}
     <#elseif section = "form">
         <form id="kc-reset-password-form" class="form reset-password ${properties.kcFormClass!}" action="${url.loginAction}" method="post">
-            <div class="reset-password-field ${properties.kcFormGroupClass!}">
+            <div class="reset-password-field form-textbox ${properties.kcFormGroupClass!}">
                 <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!} <#if usernameEditDisabled??>mdc-text-field--disabled</#if>" >
                     <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">person</i>
                     <#if auth?has_content && auth.showUsername()>
