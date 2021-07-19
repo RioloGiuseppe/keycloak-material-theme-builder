@@ -107,7 +107,7 @@
                 <hr class="separator" />
                 <div class="${properties.kcFormGroupClass!}">
                     <#if realm.password && social.providers??>
-                        <div id="kc-social-providers">
+                        <div id="kc-social-providers" class="kc-social-providers">
                             <#list social.providers as p>
                                 <a class="mdc-button mdc-button--outlined zocial ${p.providerId}" href="${p.loginUrl}" id="zocial-${p.alias}" title="${p.displayName}">
                                 <span class="mdc-button__ripple"></span>

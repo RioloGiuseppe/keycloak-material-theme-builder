@@ -100,7 +100,7 @@
 
                     <#if displayInfo>
                         <div id="kc-info" class="${properties.kcInfoAreaClass!}">
-                            <div id="kc-info-wrapper" class="${properties.kcInfoAreaWrapperClass!}">
+                            <div id="kc-info-wrapper" class="kc-info-wrapper ${properties.kcInfoAreaWrapperClass!}">
                                 <#nested "info">
                             </div>
                         </div>
