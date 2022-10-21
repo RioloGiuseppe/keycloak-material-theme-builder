@@ -10,7 +10,7 @@
     <#elseif section = "form">
         <#if realm.password>
             <form id="kc-form-login" class="form ${properties.kcFormClass!}" action="${url.loginAction}" method="post">
-                <div class="username-container ${properties.kcFormGroupClass!}">
+                <div class="username-container form-textbox ${properties.kcFormGroupClass!}">
                     <div class="${properties.kcInputWrapperClass!}">
                         <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!} <#if usernameEditDisabled??>mdc-text-field--disabled</#if>">
                             <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">person</i>
@@ -45,7 +45,7 @@
                         </#if>
                     </div>
                 </div>
-                <div class="password-container ${properties.kcFormGroupClass!}">
+                <div class="password-container form-textbox ${properties.kcFormGroupClass!}">
                     <div class="${properties.kcInputWrapperClass!}">
                         <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
                             <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">lock</i>
@@ -85,7 +85,7 @@
                             </div>
                         </#if>
                         <#if realm.resetPasswordAllowed>
-                            <div class="mdc-form-field fullwidth">
+                            <div class="mdc-form-field fullwidth form-r-link">
                                 <a href="${url.loginResetCredentialsUrl}">${msg("doForgotPassword")}</a>
                             </div>
                         </#if>
@@ -107,7 +107,7 @@
                 <hr class="separator" />
                 <div class="${properties.kcFormGroupClass!}">
                     <#if realm.password && social.providers??>
-                        <div id="kc-social-providers">
+                        <div id="kc-social-providers" class="kc-social-providers">
                             <#list social.providers as p>
                                 <a class="mdc-button mdc-button--outlined zocial ${p.providerId}" href="${p.loginUrl}" id="zocial-${p.alias}" title="${p.displayName}">
                                 <span class="mdc-button__ripple"></span>

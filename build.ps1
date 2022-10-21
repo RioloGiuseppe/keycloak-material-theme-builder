@@ -9,6 +9,7 @@ mkdir "tmp\$($folder)"
 Copy-Item -Path ".\src\keycloak-template\login" -Destination "tmp\$($folder)\login" -Recurse
 Copy-Item -Path ".\dist\favicon\" -Destination "tmp\$($folder)\login\resources\img" -Recurse
 Copy-Item -Path ".\src\icons\logo.svg" -Destination "tmp\$($folder)\login\resources\img\logo.svg"
+mkdir "tmp\$($folder)\login\resources\css"
 Copy-Item -Path ".\dist\material-components-web.min.css" -Destination "tmp\$($folder)\login\resources\css"
 
 mkdir "build"

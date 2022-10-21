@@ -7,6 +7,7 @@
     <#elseif section = "form">
         <form id="kc-update-profile-form" class="form update-profile ${properties.kcFormClass!}" action="${url.loginAction}" method="post">
             <#if user.editUsernameAllowed>
+            <div class="form-textbox">
             <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
                 <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">person</i>
                 <input required id="username" class="mdc-text-field__input ${properties.kcInputClass!}" name="username" type="text" autofocus value="${(user.username!'')}" 
@@ -27,8 +28,10 @@
                         ${kcSanitize(messagesPerField.get('username'))?no_esc}
                     </span>
                 </div>
-            </#if>    
             </#if>
+                </div>
+            </#if>
+            <div class="form-textbox">
             <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!} ${messagesPerField.printIfExists('email',properties.kcFormGroupErrorClass!)}">
                 <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">email</i>
                 <input required id="email" class="mdc-text-field__input ${properties.kcInputClass!}" name="email" type="text" autofocus value="${(user.email!'')}"
@@ -49,7 +52,9 @@
                         ${kcSanitize(messagesPerField.get('email'))?no_esc}
                     </span>
                 </div>
-            </#if>    
+            </#if>
+            </div>
+            <div class="form-textbox">
             <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!} ${messagesPerField.printIfExists('firstName',properties.kcFormGroupErrorClass!)}">
                 <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">person</i>
                 <input required id="firstName" class="mdc-text-field__input ${properties.kcInputClass!}" name="firstName" type="text" autofocus value="${(user.firstName!'')}" 
@@ -70,7 +75,9 @@
                         ${kcSanitize(messagesPerField.get('firstName'))?no_esc}
                     </span>
                 </div>
-            </#if>    
+            </#if>
+            </div>
+            <div class="form-textbox">
             <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
                 <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">person</i>
                 <input required id="lastName" class="mdc-text-field__input ${properties.kcInputClass!}" name="lastName" type="text" autofocus value="${(user.lastName!'')}" 
@@ -91,7 +98,8 @@
                         ${kcSanitize(messagesPerField.get('lastName'))?no_esc}
                     </span>
                 </div>
-            </#if>    
+            </#if>   
+             </div>
             <div class="${properties.kcFormGroupClass!}">
                 <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
                     <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">

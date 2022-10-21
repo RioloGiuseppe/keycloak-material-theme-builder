@@ -8,6 +8,7 @@
         <form id="kc-passwd-update-form" class="form update-password ${properties.kcFormClass!}" action="${url.loginAction}" method="post">
             <input type="text" readonly value="this is not a login form" style="display: none;">
             <input type="password" readonly value="this is not a login form" style="display: none;">
+            <div class="form-textbox">
             <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
                 <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">lock</i>
                 <input required id="password-new" class="mdc-text-field__input ${properties.kcInputClass!}" name="password-new" type="text" autofocus 
@@ -29,6 +30,8 @@
                     </span>
                 </div>
             </#if> 
+            </div>
+            <div class="form-textbox">
             <span class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon ${properties.kcLabelClass!}">
                 <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" tabindex="-1" role="button">lock</i>
                 <input required id="password-confirm" class="mdc-text-field__input ${properties.kcInputClass!}" name="password-confirm" type="text" autofocus
@@ -50,6 +53,7 @@
                     </span>
                 </div>
             </#if> 
+            </div>
             <div class="${properties.kcFormGroupClass!}">
                 <div id="kc-form-options" class="${properties.kcFormOptionsClass!}">
                     <div id="kc-form-buttons" class="${properties.kcFormButtonsClass!}">
