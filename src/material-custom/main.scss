@@ -1,5 +1,3 @@
-@import '../variable.scss';
-
 @use "@material/theme" with (
   $primary: #005dac,
   $secondary: #514d6a,
@@ -10,7 +8,7 @@
 $primaryColor: #005dac;
 $secondaryColor: #514d6a;
 
-@use "./material.scss";
-@use "../keycloak-template/common-resources/css/bootstrap-material-design-alerts.scss";
-@use "../keycloak-template/common-resources/css/material-keycloak-theme.scss";
-@use "../keycloak-template/common-resources/css/custom.scss";
+@import "./material.scss";
+@import "../keycloak-template/common-resources/css/bootstrap-material-design-alerts.scss";
+@import "../keycloak-template/common-resources/css/material-keycloak-theme.scss";
+@import "../keycloak-template/common-resources/css/custom.scss";
